@@ -1,0 +1,207 @@
+# baseURI: http://www.fundontology.com/Reference/FinanceLegalReference/
+# imports: http://spec.edmcouncil.org/fibo/All
+# imports: http://www.estrellaproject.org/lkif-core/legal-action.owl
+# imports: http://www.estrellaproject.org/lkif-core/lkif-extended
+# imports: http://www.fundontology.com/Reference/ReferenceValues
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix fibo-fnd-rel-rel: <http://www.omg.org/spec/EDMC-FIBO/FND/Relations/Relations/> .
+@prefix hfr-align: <http://www.jayzed.com/hfr/alignment/FIBOtoLKIF#> .
+@prefix hfr-ref: <http://www.jayzed.com/hfr/reference/FinanceandLegal#> .
+@prefix hfr-ref-flr: <http://www.fundontology.com/Reference/FinanceLegalReference/> .
+@prefix lkif-action: <http://www.estrellaproject.org/lkif-core/action.owl#> .
+@prefix lkif-expr: <http://www.estrellaproject.org/lkif-core/expression.owl#> .
+@prefix lkif-extd: <http://www.estrellaproject.org/lkif-core/lkif-extended#> .
+@prefix lkif-lact: <http://www.estrellaproject.org/lkif-core/legal-action.owl#> .
+@prefix lkif-leg-role: <http://www.estrellaproject.org/lkif-core/legal-role.owl#> .
+@prefix lkif-lrole: <http://www.estrellaproject.org/lkif-core/legal-role.owl#> .
+@prefix lkif-mereo: <http://www.estrellaproject.org/lkif-core/mereology.owl#> .
+@prefix lkif-mod: <http://www.estrellaproject.org/lkif-core/time-modification.owl#> .
+@prefix lkif-norm: <http://www.estrellaproject.org/lkif-core/norm.owl#> .
+@prefix lkif-places: <http://www.estrellaproject.org/lkif-core/relative-places.owl#> .
+@prefix lkif-proc: <http://www.estrellaproject.org/lkif-core/process.owl#> .
+@prefix lkif-role: <http://www.estrellaproject.org/lkif-core/role.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix role: <http://www.estrellaproject.org/lkif-core/role.owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix untitled-ontology-148: <http://www.semanticweb.org/jziem/ontologies/2015/11/untitled-ontology-148#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lkif-action:Agent
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/FND/AgentsAndPeople/Agents/AutonomousAgent> ;
+.
+lkif-lrole:Social_Legal_Role
+  owl:equivalentClass <http://www.omg.org/spec/EDMC-FIBO/FND/Parties/Roles/AgentInRole> ;
+.
+lkif-norm:Statute
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/FND/Law/Jurisdiction/StatuteLaw> ;
+.
+hfr-ref-flr:
+  rdf:type owl:Ontology ;
+  sm:author "Jurgen Ziemer"^^xsd:string ;
+  sm:copyright "Jayzed Data Models Inc."^^xsd:string ;
+  owl:imports <http://spec.edmcouncil.org/fibo/All> ;
+  owl:imports <http://www.estrellaproject.org/lkif-core/legal-action.owl> ;
+  owl:imports <http://www.estrellaproject.org/lkif-core/lkif-extended> ;
+  owl:imports <http://www.fundontology.com/Reference/ReferenceValues> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+hfr-ref-flr:Classification
+  rdf:type owl:Class ;
+  rdfs:isDefinedBy <http://www.jayzed.com/hfr/reference/ISO_IEC_11179-2> ;
+  rdfs:subClassOf <http://spec.edmcouncil.org/fibo/FND/Relations/Relations/Reference> ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass <http://spec.edmcouncil.org/fibo/FND/Arrangements/ClassificationSchemes/ClassificationScheme> ;
+      owl:onProperty lkif-mereo:component_of ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  skos:definition "An Item in a Classification Scheme."^^xsd:string ;
+.
+hfr-ref-flr:ClassificationScheme_AreaOfLaw
+  rdf:type hfr-ref-flr:LegalClassificationScheme ;
+  rdfs:label "Areas of Law"^^xsd:string ;
+.
+hfr-ref-flr:Classification_AreaOfLaw_FinancialServices
+  rdf:type hfr-ref-flr:LegalClassification ;
+  lkif-mereo:component_of <http://www.fundontology.com/Reference/ReferenceValues#ClassificationScheme_AreaOfLaw> ;
+  lkif-mereo:direct_part_of <http://www.fundontology.com/Reference/ReferenceValues#ClassificationScheme_AreaOfLaw> ;
+  lkif-mereo:part_of <http://www.fundontology.com/Reference/ReferenceValues#ClassificationScheme_AreaOfLaw> ;
+  lkif-mereo:strict_part_of <http://www.fundontology.com/Reference/ReferenceValues#ClassificationScheme_AreaOfLaw> ;
+  fibo-fnd-rel-rel:classifies <http://www.fundontology.com/Reference/ReferenceValues#Regulation_AIFMD> ;
+  fibo-fnd-rel-rel:classifies <http://www.fundontology.com/Reference/ReferenceValues#Regulation_InvestorAdvisersAct> ;
+  fibo-fnd-rel-rel:classifies <http://www.fundontology.com/Reference/ReferenceValues#Statute_US_Dodd_Frank> ;
+  fibo-fnd-rel-rel:refersTo <http://www.fundontology.com/Reference/ReferenceValues#Regulation_AIFMD> ;
+  fibo-fnd-rel-rel:refersTo <http://www.fundontology.com/Reference/ReferenceValues#Regulation_InvestorAdvisersAct> ;
+  rdfs:label "Financial Services area of law"^^xsd:string ;
+.
+hfr-ref-flr:Declaration_US_InvestmentAdvisorsAct
+  rdf:type lkif-expr:Declaration ;
+  lkif-expr:utterer <http://www.fundontology.com/Reference/ReferenceValues#Legislative_Body_US_Congress> ;
+  rdfs:label "Declaration of US Investment Advisors"^^xsd:string ;
+.
+hfr-ref-flr:ExecutiveBody
+  rdf:type owl:Class ;
+  rdfs:comment "The executive branch is the body of the government that has its authority and responsibility for the daily administration of the state. The executive branch executes, or enforces the law. "^^xsd:string ;
+  rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Executive_(government)> ;
+  rdfs:label "Executive Branch"^^xsd:string ;
+  rdfs:label "Legislative Body"^^xsd:string ;
+  rdfs:subClassOf lkif-lact:Public_Body ;
+  owl:disjointWith lkif-lact:Legislative_Body ;
+.
+hfr-ref-flr:FinanceStatute
+  rdf:type owl:Class ;
+  rdfs:label "Finance Statute"^^xsd:string ;
+  rdfs:subClassOf <http://spec.edmcouncil.org/fibo/FND/Law/Jurisdiction/StatuteLaw> ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Restriction ;
+            owl:hasValue hfr-ref-flr:Classification_AreaOfLaw_FinancialServices ;
+            owl:onProperty <http://spec.edmcouncil.org/fibo/FND/Relations/Relations/isClassifiedBy> ;
+          ]
+          <http://spec.edmcouncil.org/fibo/FND/Law/Jurisdiction/StatuteLaw>
+        ) ;
+    ] ;
+  skos:definition "A Statute Law pertaining to Financial Industry."^^xsd:string ;
+.
+hfr-ref-flr:FinancialJusrisdiction
+  rdf:type owl:Class ;
+  rdfs:label "Financial Jurisdiction"^^xsd:string ;
+  rdfs:subClassOf <http://spec.edmcouncil.org/fibo/FND/Law/Jurisdiction/Jurisdiction> ;
+.
+hfr-ref-flr:FinancialRegulation
+  rdf:type owl:Class ;
+  rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Financial_regulation> ;
+  rdfs:label "Financial Regulation"^^xsd:string ;
+  rdfs:subClassOf lkif-norm:Regulation ;
+  owl:equivalentClass _:b79268 ;
+  skos:definition "Financial regulation is a form of regulation or supervision, which subjects financial institutions to certain requirements, restrictions and guidelines, aiming to maintain the integrity of the financial system. This may be handled by either a government or non-government organization. Financial regulation has also influenced the structure of banking sectors, by decreasing borrowing costs and increasing the variety of financial products available."^^xsd:string ;
+.
+hfr-ref-flr:LegalClassification
+  rdf:type owl:Class ;
+  rdfs:label "Legal Classification"^^xsd:string ;
+  rdfs:subClassOf hfr-ref-flr:Classification ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass hfr-ref-flr:LegalClassificationScheme ;
+      owl:onProperty lkif-mereo:component_of ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+.
+hfr-ref-flr:LegalClassificationScheme
+  rdf:type owl:Class ;
+  rdfs:label "Legal Classification Scheme"^^xsd:string ;
+  rdfs:subClassOf <http://spec.edmcouncil.org/fibo/FND/Arrangements/ClassificationSchemes/ClassificationScheme> ;
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/RegulatoryAgencies/Regulation> ;
+.
+hfr-ref-flr:Obligation_US_InvestmentAdvisorAct
+  rdf:type lkif-norm:Obligation ;
+  lkif-expr:held_by <http://www.fundontology.com/Reference/ReferenceValues#Legislative_Body_US_Congress> ;
+  rdfs:label "Obligation from Investment Advisors"^^xsd:string ;
+.
+hfr-ref-flr:RegulatoryAuthority
+  rdf:type owl:Class ;
+  rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Regulatory_agency> ;
+  rdfs:label "Regulatory Authority"^^xsd:string ;
+  rdfs:subClassOf hfr-ref-flr:ExecutiveBody ;
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/RegulatoryAgencies/RegulatoryAgency> ;
+  skos:definition "A regulatory agency (also regulatory authority, regulatory body or regulator) is a public authority or government agency responsible for exercising autonomous authority over some area of human activity in a regulatory or supervisory capacity. An independent regulatory agency is a regulatory agency that is independent from other branches or arms of the government."^^xsd:string ;
+.
+hfr-ref-flr:RegulatoryAuthority_SecuritiesAndExchangeCommission
+  rdf:type hfr-ref-flr:RegulatoryAuthority ;
+  rdfs:label "U.S. Securities and Exchange Commission"^^xsd:string ;
+  owl:sameAs <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/USJurisdiction/USRegulatoryAgencies/SecuritiesAndExchangeCommission> ;
+.
+hfr-ref-flr:Rulemaking
+  rdf:type owl:Class ;
+  rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Rulemaking> ;
+  rdfs:label "Rulemaking"^^xsd:string ;
+  rdfs:subClassOf lkif-lact:Public_Act ;
+  skos:definition "In administrative law, rule-making is the process that executive and independent agencies use to create, or promulgate, regulations. In general, legislatures first set broad policy mandates by passing statutes, then agencies create more detailed regulations through rulemaking."^^xsd:string ;
+.
+hfr-ref-flr:Rulemaking_SEC_RegulationOfInvestmentAdvisors_2013
+  rdf:type hfr-ref-flr:Rulemaking ;
+  rdfs:label "SEC Regulation of Investment Advisors of 2013"^^xsd:string ;
+.
+<http://www.fundontology.com/Reference/ReferenceValues#ClassificationScheme_AreaOfLaw>
+  lkif-mereo:component hfr-ref-flr:Classification_AreaOfLaw_FinancialServices ;
+  lkif-mereo:direct_part hfr-ref-flr:Classification_AreaOfLaw_FinancialServices ;
+  lkif-mereo:part hfr-ref-flr:Classification_AreaOfLaw_FinancialServices ;
+  lkif-mereo:strict_part hfr-ref-flr:Classification_AreaOfLaw_FinancialServices ;
+.
+<http://www.fundontology.com/Reference/ReferenceValues#Definitional_Expression_US_AdvisorAct>
+  lkif-proc:created_by <http://www.fundontology.com/Reference/ReferenceValues#Act_of_Law_1940_InvestmentAdvisorAct> ;
+.
+<http://www.fundontology.com/Reference/ReferenceValues#Definitional_Expression_US_AdvisorRegulation>
+  rdf:type lkif-norm:Definitional_Expression ;
+  lkif-proc:created_by <http://www.fundontology.com/Reference/ReferenceValues#Mandate_SEC_1940_InvestmentAdvisorAct> ;
+  rdfs:label "Definitional expression for Investment Advisors"^^xsd:string ;
+.
+<http://www.fundontology.com/Reference/ReferenceValues#Mandate_SEC_1940_InvestmentAdvisorAct>
+  rdf:type lkif-lact:Mandate ;
+  lkif-action:actor <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/USJurisdiction/USRegulatoryAgencies/SecuritiesAndExchangeCommission> ;
+  lkif-proc:created_by <http://www.fundontology.com/Reference/ReferenceValues#Act_of_Law_1940_InvestmentAdvisorAct> ;
+  rdfs:label "SEC mandate from 1940 U.S. Investment Advisers Act"^^xsd:string ;
+.
+<http://www.fundontology.com/Reference/ReferenceValues#Regulation_AIFMD>
+  rdf:type _:b79268 ;
+  fibo-fnd-rel-rel:isClassifiedBy hfr-ref-flr:Classification_AreaOfLaw_FinancialServices ;
+.
+<http://www.fundontology.com/Reference/ReferenceValues#Regulation_InvestorAdvisersAct>
+  rdf:type _:b79268 ;
+  lkif-expr:bears <http://www.fundontology.com/Reference/ReferenceValues#Definitional_Expression_US_AdvisorRegulation> ;
+  lkif-proc:created_by hfr-ref-flr:Rulemaking_SEC_RegulationOfInvestmentAdvisors_2013 ;
+  fibo-fnd-rel-rel:isClassifiedBy hfr-ref-flr:Classification_AreaOfLaw_FinancialServices ;
+.
+_:b79268
+  rdf:type owl:Restriction ;
+  owl:equivalentClass hfr-ref-flr:FinancialRegulation ;
+  owl:hasValue hfr-ref-flr:Classification_AreaOfLaw_FinancialServices ;
+  owl:onProperty fibo-fnd-rel-rel:isClassifiedBy ;
+.
