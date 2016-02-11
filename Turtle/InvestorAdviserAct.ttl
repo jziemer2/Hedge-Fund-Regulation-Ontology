@@ -1,0 +1,361 @@
+# baseURI: http://www.fundontology.com/InvestorAdviserAct
+# imports: http://www.fundontology.com/FundRegulation
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fo-fr: <http://www.fundontology.com/FundRegulation#> .
+@prefix fo-iaa: <http://www.fundontology.com/InvestorAdviserAct#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fo-fr:Legal_Rule
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty fo-fr:applies_legal ;
+      owl:someValuesFrom fo-fr:Legal_Consequence ;
+    ] ;
+.
+fo-fr:Rule_Def_US_IAA_Sect_202a11
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+.
+fo-fr:Rule_Def_US_IAA_Sect_202a11_1_business
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+.
+fo-fr:Rule_Def_US_IAA_Sect_202a11_1_compensation
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+.
+fo-fr:Rule_Def_US_IAA_Sect_202a11_1_service
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+.
+fo-fr:Rule_Excl_US_IAA_Sect_202a11_1
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+.
+fo-fr:Rule_Excl_US_IAA_Sect_202a11_1_A_bank
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+.
+<http://www.fundontology.com/InvestorAdviserAct>
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.fundontology.com/FundRegulation> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+fo-iaa:Defined_Ex_US_IAA_Section_202_1_11
+  rdf:type owl:Class ;
+  rdfs:label "Defined ex. US IAA Section 202(1)(11) business"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          fo-iaa:Defined_Ex_US_IAA_Section_202_1_11_business
+          fo-iaa:Defined_Ex_US_IAA_Section_202_1_11_service
+          fo-iaa:Defined_Ex_US_IAA_Section_202_1_11_compensation
+        ) ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Def_US_IAA_Sect_202a11 ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition " Investment adviser” means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities."^^xsd:string ;
+.
+fo-iaa:Defined_Ex_US_IAA_Section_202_1_11_business
+  rdf:type owl:Class ;
+  rdfs:label "Defined ex. US IAA Section 202(1)(11) business"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass fo-fr:InvestmentAdviser ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Def_US_IAA_Sect_202a11_1_business ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition " Investment adviser” means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities."^^xsd:string ;
+.
+fo-iaa:Defined_Ex_US_IAA_Section_202_1_11_compensation
+  rdf:type owl:Class ;
+  rdfs:label "Defined ex. US IAA Section 202(1)(11) compensation"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          <http://spec.edmcouncil.org/fibo/FBC/ProductsAndServices/FinancialProductsAndServices/FinancialServiceProvider>
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty <http://spec.edmcouncil.org/fibo/FND/Relations/Relations/provides> ;
+            owl:someValuesFrom [
+                rdf:type owl:Class ;
+                owl:intersectionOf (
+                    fo-fr:InvestmentAdvice
+                    [
+                      rdf:type owl:Restriction ;
+                      owl:onProperty <http://spec.edmcouncil.org/fibo/FND/Relations/Relations/isClassifiedBy> ;
+                      owl:someValuesFrom fo-fr:ServiceFeeType ;
+                    ]
+                  ) ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Def_US_IAA_Sect_202a11_1_compensation ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition " Investment adviser” means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities."^^xsd:string ;
+.
+fo-iaa:Defined_Ex_US_IAA_Section_202_1_11_service
+  rdf:type owl:Class ;
+  rdfs:label "Defined ex. US IAA Section 202(1)(11) service"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          <http://spec.edmcouncil.org/fibo/FBC/ProductsAndServices/FinancialProductsAndServices/FinancialServiceProvider>
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty <http://spec.edmcouncil.org/fibo/FND/Relations/Relations/provides> ;
+            owl:someValuesFrom fo-fr:SecuritiesAdvice ;
+          ]
+        ) ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Def_US_IAA_Sect_202a11_1_service ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition " Investment adviser” means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities."^^xsd:string ;
+.
+fo-iaa:Ex_US_IAA_Section_202_1_11
+  rdf:type owl:Class ;
+  rdfs:label "Defined ex. US IAA Section 202(1)(11) business"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  skos:definition " Investment adviser” means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities."^^xsd:string ;
+.
+fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11
+  rdf:type owl:Class ;
+  sm:author "Jurgen Ziemer"^^xsd:string ;
+  sm:copyright "Jayzed Data Models Inc."^^xsd:string ;
+  rdfs:comment "A class to infer the Financial Service Providers that are excluded from the IAA definition of Investment Advisers."^^xsd:string ;
+  rdfs:isDefinedBy <http://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "Defined as Investment Adviser ex. US IAA Section 202(1)(11)"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_A_bank
+          fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_B_professional
+          fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_C_broker_dealer
+          fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_D_publisher
+          fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_E_gov_sec_only
+          fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_F_rating_organization
+        ) ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Excl_US_IAA_Sect_202a11 ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition " Investment adviser” means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities."^^xsd:string ;
+.
+fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_A_bank
+  rdf:type owl:Class ;
+  rdfs:label "Excluded ex. US IAA Section 202(1)(11)(A) Bank"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/FinancialServicesEntities/DepositoryInstitution> ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_A_bank ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition """ Investment adviser exclusion (A) 
+a bank, or any bank holding company as defined in the Bank Holding Company Act of 1956 [12 U.S.C. 1841 et seq.] which is not an investment company, except that the term “investment adviser” includes any bank or bank holding company to the extent that such bank or bank holding company serves or acts as an investment adviser to a registered investment company, but if, in the case of a bank, such services or actions are performed through a separately identifiable department or division, the department or division, and not the bank itself, shall be deemed to be the investment adviser;"""^^xsd:string ;
+.
+fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_B_professional
+  rdf:type owl:Class ;
+  rdfs:label "Excluded ex. US IAA Section 202(1)(11)(A) Professional"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_B_professional ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition """ Investment adviser exclusion (B) 
+any lawyer, accountant, engineer, or teacher whose performance of such services is solely incidental to the practice of his profession;"""^^xsd:string ;
+.
+fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_C_broker_dealer
+  rdf:type owl:Class ;
+  rdfs:label "Excluded ex. US IAA Section 202(1)(11)(A) Broker/Dealer"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/FinancialServicesEntities/BrokerageFirm> ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_C_broker_dealer ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition """ Investment adviser exclusion (C) 
+any broker or dealer whose performance of such services is solely incidental to the conduct of his business as a broker or dealer and who receives no special compensation therefor"""^^xsd:string ;
+.
+fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_D_publisher
+  rdf:type owl:Class ;
+  rdfs:label "Excluded ex. US IAA Section 202(1)(11)(A) Broker/Dealer"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/BE/FunctionalEntities/Publishers/Publisher> ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_D_publisher ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition """ Investment adviser exclusion (D) 
+the publisher of any bona fide newspaper, news magazine or business or financial publication of general and regular circulation; """^^xsd:string ;
+.
+fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_E_gov_sec_only
+  rdf:type owl:Class ;
+  rdfs:label "Excluded ex. US IAA Section 202(1)(11)(E) only US Government Securities"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_E_gov_sec_only ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition """ Investment adviser exclusion (E) 
+any person whose advice, analyses or reports relate to no securities other than securities which are direct obligations of or obligations guaranteed as to principal or interest by the United States .."""^^xsd:string ;
+.
+fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11_F_rating_organization
+  rdf:type owl:Class ;
+  rdfs:label "Excluded ex. US IAA Section 202(1)(11)(F) Rating Organization"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/IND/Indicators/Indicators/FinancialInformationPublisher> ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_F_rating_organization ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+  skos:definition """ Investment adviser exclusion (F) 
+any nationally recognized statistical rating organization"""^^xsd:string ;
+.
+fo-iaa:NotExcluded_Ex_US_IAA_Section_202_1_11
+  rdf:type owl:Class ;
+  sm:author "Jurgen Ziemer"^^xsd:string ;
+  sm:copyright "Jayzed Data Models Inc."^^xsd:string ;
+  rdfs:comment "A class to infer the Financial Service Providers that are excluded from the IAA definition of Investment Advisers."^^xsd:string ;
+  rdfs:isDefinedBy <http://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "Defined as Investment Adviser ex. US IAA Section 202(1)(11)"^^xsd:string ;
+  rdfs:subClassOf fo-iaa:US_IAA ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:complementOf fo-iaa:Excluded_Ex_US_IAA_Section_202_1_11 ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue fo-iaa:Rule_Not_Excl_US_IAA_Sect_202a11 ;
+      owl:onProperty fo-fr:considered_by ;
+    ] ;
+.
+fo-iaa:Rule_Def_US_IAA_Sect_202a11
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Def_US_IAA_Sect_202a11_1_business
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Def_US_IAA_Sect_202a11_1_compensation
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Def_US_IAA_Sect_202a11_1_service
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Excl_US_IAA_Sect_202a11
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:exclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_A_bank
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:exclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_B_professional
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:exclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_C_broker_dealer
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:exclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_D_publisher
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:exclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_E_gov_sec_only
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:exclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Excl_US_IAA_Sect_202a11_1_F_rating_organization
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:exclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_Not_Excl_US_IAA_Sect_202a11
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:Rule_US_IAA_Sect_202a11
+  rdf:type fo-fr:Legal_Rule ;
+  fo-fr:applies_legal fo-iaa:inclusion_US_IAA_Section_202_1_11 ;
+  rdfs:comment "‘‘Investment adviser’’ means any person who, for compensation, engages in the business of advising others, either directly or through publications or writings, as to the value of securities or as to the advisability of investing in, purchasing, or selling securities, or who, for compensation and as part of a regular business, issues or promulgates analyses or reports concerning securities"^^xsd:string ;
+  rdfs:isDefinedBy <https://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:US_IAA
+  rdf:type owl:Class ;
+  rdfs:label "TD Prime Service"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/norm.owl#Normatively_Qualified> ;
+.
+fo-iaa:exclusion_US_IAA_Section_202_1_11
+  rdf:type fo-fr:Legal_Consequence ;
+  rdfs:label "Inclusion under US IAA Section 202(1)(11)"^^xsd:string ;
+.
+fo-iaa:inclusion_US_IAA_Section_202_1_11
+  rdf:type fo-fr:Legal_Consequence ;
+  rdfs:label "Inclusion under US IAA Section 202(1)(11)"^^xsd:string ;
+.

@@ -1,0 +1,125 @@
+# baseURI: http://www.hedgefundontology.com/HedgeFundRegulation
+# imports: http://www.estrellaproject.org/lkif-core/legal-action.owl
+# imports: http://www.estrellaproject.org/lkif-core/lkif-extended
+# imports: http://www.fundontology.com/FundRegulation
+# imports: http://www.fundontology.com/Reference/ReferenceValues
+
+@prefix : <http://www.hedgefundontology.com/HedgeFundRegulation#> .
+@prefix hfo-hfr: <http://www.hedgefundontology.com/HedgeFundRegulation#> .
+@prefix lkif-action: <http://www.estrellaproject.org/lkif-core/action.owl#> .
+@prefix lkif-expr: <http://www.estrellaproject.org/lkif-core/expression.owl#> .
+@prefix lkif-ext: <http://www.estrellaproject.org/lkif-core/lkif-extended#> .
+@prefix lkif-lact: <http://www.estrellaproject.org/lkif-core/legal-action.owl#> .
+@prefix lkif-laction: <http://www.estrellaproject.org/lkif-core/legal-action.owl#> .
+@prefix lkif-legal-role: <http://www.estrellaproject.org/lkif-core/legal-role.owl#> .
+@prefix lkif-mereo: <http://www.estrellaproject.org/lkif-core/mereology.owl#> .
+@prefix lkif-mod: <http://www.estrellaproject.org/lkif-core/time-modification.owl#> .
+@prefix lkif-norm: <http://www.estrellaproject.org/lkif-core/norm.owl#> .
+@prefix lkif-place: <http://www.estrellaproject.org/lkif-core/relative-places.owl#> .
+@prefix lkif-proc: <http://www.estrellaproject.org/lkif-core/process.owl#> .
+@prefix lkif-role: <http://www.estrellaproject.org/lkif-core/role.owl#> .
+@prefix lkif-rules: <http://www.estrellaproject.org/lkif-core/lkif-rules.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.fundontology.com/FundRegulation#InvestmentFund>
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/FinancialServicesEntities/InvestmentCompany>
+          hfo-hfr:AlternativeInvestmentFund
+        ) ;
+    ] ;
+.
+<http://www.hedgefundontology.com/HedgeFundRegulation>
+  rdf:type owl:Ontology ;
+  sm:author "Jurgen Ziemer"^^xsd:string ;
+  sm:copyright "Jayzed Data Models Inc."^^xsd:string ;
+  owl:imports <http://www.estrellaproject.org/lkif-core/legal-action.owl> ;
+  owl:imports <http://www.estrellaproject.org/lkif-core/lkif-extended> ;
+  owl:imports <http://www.fundontology.com/FundRegulation> ;
+  owl:imports <http://www.fundontology.com/Reference/ReferenceValues> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+hfo-hfr:AlternativeInvestmentFund
+  rdf:type owl:Class ;
+  rdfs:isDefinedBy <http://www.fca.org.uk/firms/markets/international-markets/aifmd> ;
+  rdfs:label "Alternative Investment Fund"^^xsd:string ;
+  rdfs:label "Private Fund"^^xsd:string ;
+  rdfs:subClassOf <http://www.fundontology.com/FundRegulation#InvestmentFund> ;
+  skos:definition "An AIF is a 'collective investment undertaking' that is not subject to the UCITS regime, and includes hedge funds, private equity funds, retail investment funds, investment companies and real estate funds, among others."^^xsd:string ;
+  skos:definition "Private Fund:  An issuer that would be an investment company as defined in section 3 of the Investment Company Act of 1940 but for section 3(c)(1) or 3(c)(7) of that Act. "^^xsd:string ;
+.
+hfo-hfr:Excepted_Ex_US_IAA_Section_202_1_11
+  rdf:type owl:Class ;
+  sm:author "Jurgen Ziemer"^^xsd:string ;
+  sm:copyright "Jayzed Data Models Inc."^^xsd:string ;
+  rdfs:comment "A class to infer the Financial Service Providers that fall under the IAA definition of Investment Advisers."^^xsd:string ;
+  rdfs:isDefinedBy <http://www.sec.gov/about/laws/iaa40.pdf> ;
+  rdfs:label "Defined as Investment Adviser ex. US IAA Section 202(1)(11)"^^xsd:string ;
+  rdfs:subClassOf lkif-norm:Normatively_Qualified ;
+  owl:equivalentClass lkif-norm:Normatively_Qualified ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          <http://www.fundontology.com/FundRegulation#Defined_Ex_US_IAA_Section_202_1_11_service>
+          <http://www.fundontology.com/FundRegulation#Defined_Ex_US_IAA_Section_202_1_11_compensation>
+          <http://www.fundontology.com/FundRegulation#Defined_Ex_US_IAA_Section_202_1_11_business>
+        ) ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue <http://www.fundontology.com/FundRegulation#Rule_Def_US_IAA_Sect_202a11> ;
+      owl:onProperty <http://www.fundontology.com/FundRegulation#considered_by> ;
+    ] ;
+  skos:definition """ \"Investment adviser” means ... but does not include:
+A) a bank, or any bank holding company
+B) any lawyer, accountant, engineer, or teacher 
+C) the publisher of any bona fide newspaper, news magazine or business or financial publication of general and regular circulation
+D) any person whose advice, analyses or reports relate to no securities other than ... US government securities"""^^xsd:string ;
+.
+hfo-hfr:Excepted_Ex_US_IAA_Section_202_1_11_A_bank
+  rdf:type owl:Class ;
+  rdfs:label "Revevant ex. US IAA Section 202(1)(11)"^^xsd:string ;
+  rdfs:subClassOf lkif-norm:Normatively_Qualified ;
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/FinancialServicesEntities/DepositoryInstitution> ;
+  owl:equivalentClass <http://www.fundontology.com/FundRegulation#Defined_Ex_US_IAA_Section_202_1_11> ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue <http://www.fundontology.com/FundRegulation#Rule_Def_US_IAA_Sect_202a11> ;
+      owl:onProperty <http://www.fundontology.com/FundRegulation#considered_by> ;
+    ] ;
+  skos:definition """Investment Adviser exception
+(A) a bank, or any bank holding company as defined in the Bank Holding Company Act of 1956 [12 U.S.C. 1841 et seq.] which is not an investment company, except that the term “investment adviser” includes any bank or bank holding company to the extent that such bank or bank holding company serves or acts as an investment adviser to a registered investment company, but if, in the case of a bank, such services or actions are performed through a separately identifiable department or division, the department or division, and not the bank itself, shall be deemed to be the investment adviser;"""^^xsd:string ;
+.
+hfo-hfr:Excepted_Ex_US_IAA_Section_202_1_11_D_publisher
+  rdf:type owl:Class ;
+  rdfs:label "Revevant ex. US IAA Section 202(1)(11)"^^xsd:string ;
+  rdfs:subClassOf lkif-norm:Normatively_Qualified ;
+  owl:equivalentClass <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/FinancialServicesEntities/DepositoryInstitution> ;
+  owl:equivalentClass <http://www.fundontology.com/FundRegulation#Defined_Ex_US_IAA_Section_202_1_11> ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue <http://www.fundontology.com/FundRegulation#Rule_Def_US_IAA_Sect_202a11> ;
+      owl:onProperty <http://www.fundontology.com/FundRegulation#considered_by> ;
+    ] ;
+  skos:definition """Investment Adviser exception
+(D) the publisher of any bona fide newspaper, news magazine or business or financial publication of general and regular circulation;"""^^xsd:string ;
+.
+hfo-hfr:HedgeFund
+  rdf:type owl:Class ;
+  rdfs:label "Hedge Fund"^^xsd:string ;
+  rdfs:subClassOf hfo-hfr:AlternativeInvestmentFund ;
+.
+hfo-hfr:PrivateEquityFund
+  rdf:type owl:Class ;
+  rdfs:label "Private Equity"^^xsd:string ;
+  rdfs:subClassOf hfo-hfr:AlternativeInvestmentFund ;
+.
+sm:author
+  rdfs:range xsd:string ;
+.

@@ -1,0 +1,369 @@
+# baseURI: http://www.fundontology.com/FundRegulation
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://purl.org/dc/terms/
+# imports: http://www.estrellaproject.org/lkif-core/lkif-extended
+# imports: http://www.fundontology.com/Reference/ReferenceValues
+# imports: http://www.jayzed.com/hfr/owl2dl
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix fibo-fbc-fct-fse: <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fct-rga: <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/RegulatoryAgencies/> .
+@prefix fibo-fbc-fct-usfse: <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/USJurisdiction/USFinancialServicesEntities/> .
+@prefix fibo-fbc-pas-fpas: <http://spec.edmcouncil.org/fibo/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-rel-rel: <http://spec.edmcouncil.org/fibo/FND/Relations/Relations/> .
+@prefix fo-fr: <http://www.fundontology.com/FundRegulation#> .
+@prefix hfr-inv: <http://www.jayzed.com/hfr/Investment#> .
+@prefix lkif-norm: <http://www.estrellaproject.org/lkif-core/norm.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix owl2dl: <http://www.jayzed.com/hfr/owl2dl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-fse:InvestmentCompany
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          fo-fr:InvestmentFund
+          [
+            rdf:type owl:Restriction ;
+            owl:hasValue <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/USJurisdiction/USRegulatoryAgencies/SecuritiesAndExchangeCommission> ;
+            owl:onProperty fibo-fbc-fct-rga:isRegulatedBy ;
+          ]
+        ) ;
+    ] ;
+.
+<http://spec.edmcouncil.org/fibo/FBC/ProductsAndServices/ProductsAndServices/FinancialService>
+  rdfs:subClassOf [] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty fibo-fnd-rel-rel:isClassifiedBy ;
+      owl:someValuesFrom fo-fr:ServiceType ;
+    ] ;
+.
+<http://www.estrellaproject.org/lkif-core/expression.owl#Qualification>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty lkif-norm:commanded_by ;
+      owl:someValuesFrom lkif-norm:Qualificatory_Expression ;
+    ] ;
+.
+<http://www.estrellaproject.org/lkif-core/expression.owl#applied_by_concept>
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/expression.owl#Qualified> ;
+  rdfs:label "applied by concept"^^xsd:string ;
+  rdfs:range lkif-norm:Qualificatory_Expression ;
+  rdfs:subPropertyOf <http://www.estrellaproject.org/lkif-core/expression.owl#qualified_by> ;
+  owl:inverseOf fo-fr:applies_legal ;
+.
+<http://www.fundontology.com/FundRegulation>
+  rdf:type owl:Ontology ;
+  sm:author "Jurgen Ziemer"^^xsd:string ;
+  sm:copyright "Jayzed Data Models Inc."^^xsd:string ;
+  owl:imports <http://purl.org/dc/elements/1.1/> ;
+  owl:imports <http://purl.org/dc/terms/> ;
+  owl:imports <http://www.estrellaproject.org/lkif-core/lkif-extended> ;
+  owl:imports <http://www.fundontology.com/Reference/ReferenceValues> ;
+  owl:imports <http://www.jayzed.com/hfr/owl2dl> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+fo-fr:Adjudication
+  rdf:type owl:Class ;
+  rdfs:label "Adjudication"^^xsd:string ;
+  rdfs:subClassOf fo-fr:Judgement ;
+.
+fo-fr:Advice
+  rdf:type fo-fr:InclusionStatus ;
+  rdfs:label "Advice"^^xsd:string ;
+.
+fo-fr:ClassificationScheme_ServiceFee
+  rdf:type fo-fr:ServiceClassificationScheme ;
+  rdfs:label "Fee Classification Scheme"^^xsd:string ;
+.
+fo-fr:ClassificationScheme_ServiceType
+  rdf:type fo-fr:ServiceClassificationScheme ;
+  fibo-fnd-rel-rel:defines <http://www.jayzed.com/hfr/FundSampleData#FinancialServiceFeeType> ;
+  fibo-fnd-rel-rel:defines <http://www.jayzed.com/hfr/FundSampleData#FinancialServiceProductType> ;
+  rdfs:label "Financial Service Classification Scheme"^^xsd:string ;
+.
+fo-fr:Compensation
+  rdf:type fo-fr:InclusionStatus ;
+  rdfs:label "Compensation"^^xsd:string ;
+.
+fo-fr:Contractual_Agreement
+  rdf:type owl:Class ;
+  rdfs:label "Contactual Agreement"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Expression> ;
+  rdfs:subClassOf lkif-norm:Norm ;
+.
+fo-fr:FinancialProduct_Securities
+  rdf:type fibo-fbc-pas-fpas:FinancialProduct ;
+  rdfs:label "Securities Product"^^xsd:string ;
+.
+fo-fr:GC_US_InvestmentAdviserAct
+  rdf:type owl:Class ;
+  rdfs:label "General case for the US InvestmentAdvisorAct"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+fo-fr:GeneralCase
+  rdf:type owl:Class ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Expression> ;
+.
+fo-fr:InclusionStatus
+  rdf:type owl:Class ;
+  rdfs:label "Inclusion Status"^^xsd:string ;
+.
+fo-fr:InvestmentAdvice
+  rdf:type owl:Class ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+  rdfs:subClassOf <http://spec.edmcouncil.org/fibo/FBC/ProductsAndServices/ProductsAndServices/FinancialService> ;
+.
+fo-fr:InvestmentAdviser
+  rdf:type owl:Class ;
+  rdfs:isDefinedBy <http://investor.gov/glossary/glossary_terms/investment-adviser> ;
+  rdfs:label "Investment Advisor"^^xsd:string ;
+  rdfs:subClassOf fibo-fbc-pas-fpas:FinancialServiceProvider ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom <http://spec.edmcouncil.org/fibo/BE/LegalEntities/LegalPersons/LegalPerson> ;
+      owl:onProperty fibo-fnd-rel-rel:hasIdentity ;
+    ] ;
+  skos:definition "An investment adviser is a firm or an individual that, for compensation, engages in the business of advising others as to the value of securities or as to the advisability of investing in, purchasing, or selling securities. An investment adviser can also be a firm or individual that, for compensation and as part of a regular business, issues analyses or reports concerning securities."^^xsd:string ;
+.
+fo-fr:InvestmentFund
+  rdf:type owl:Class ;
+  rdfs:comment "A.k.a. Investment vehicle. The superclass for collective/pooled investment vehicles/funds."^^xsd:string ;
+  rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Investment_fund> ;
+  rdfs:label "Investment Fund"^^xsd:string ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:unionOf (
+                fibo-fbc-fct-fse:ManagementCompany
+                fibo-fbc-fct-fse:UnitInvestmentTrust
+              ) ;
+          ]
+          owl:Thing
+        ) ;
+    ] ;
+  skos:definition """An investment fund is a way of investing money alongside other investors in order to benefit from the inherent advantages of working as part of a group.
+Terminology varies with country but investment funds are often referred to as investment pools, collective investment vehicles, collective investment schemes, managed funds, or simply funds. An investment fund may be held by the public, such as a mutual fund, exchange-traded fund, or closed-end fund,[1] or it may be sold only in a private placement, such as a hedge fund or private equity fund.[2] The term also includes specialized vehicles such as collective and common trust funds, which are unique bank-managed funds structured primarily to commingle assets from qualifying pension plans or trusts"""^^xsd:string ;
+.
+fo-fr:InvestmentManager
+  rdf:type owl:Class ;
+  rdfs:label "Whitingham Wealth"^^xsd:string ;
+  rdfs:subClassOf fo-fr:InvestmentAdviser ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          fo-fr:InvestmentAdviser
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:manages ;
+            owl:someValuesFrom fibo-fbc-fct-fse:InvestmentCompany ;
+          ]
+        ) ;
+    ] ;
+.
+fo-fr:Judgement
+  rdf:type owl:Class ;
+  rdfs:label "Judgement"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Expression> ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification> ;
+.
+fo-fr:JudicialInterpretation
+  rdf:type owl:Class ;
+  rdfs:label "Judicial Interpretation"^^xsd:string ;
+  rdfs:subClassOf fo-fr:Judgement ;
+.
+fo-fr:Judicial_Claim
+  rdf:type owl:Class ;
+  rdfs:label "Judicial Claim"^^xsd:string ;
+  rdfs:subClassOf fo-fr:Judicially_Qualified ;
+.
+fo-fr:Judicial_Outcome
+  rdf:type owl:Class ;
+  rdfs:label "Judicial Outcome"^^xsd:string ;
+  rdfs:subClassOf fo-fr:Judicially_Qualified ;
+.
+fo-fr:Judicially_Qualified
+  rdf:type owl:Class ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Qualified> ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty <http://www.estrellaproject.org/lkif-core/expression.owl#qualified_by> ;
+      owl:someValuesFrom fo-fr:Qualifying_Legal_Expression ;
+    ] ;
+.
+fo-fr:Legal_Consequence
+  rdf:type owl:Class ;
+  rdfs:label "Legal Consequence"^^xsd:string ;
+  rdfs:subClassOf lkif-norm:Normatively_Qualified ;
+  skos:definition "Legal_Consequence represents the sanction provided by the law in the presence of some Legal_Status or Material_Circumstance. It covers all cases when the Legal_Rule considers some Normatively_Qualified expression, but does not simply allows, disallows or evaluates it."^^xsd:string ;
+.
+fo-fr:Legal_Rule
+  rdf:type owl:Class ;
+  rdfs:label "Legal Rule"^^xsd:string ;
+  rdfs:subClassOf lkif-norm:Norm ;
+  rdfs:subClassOf fo-fr:Qualifying_Legal_Expression ;
+.
+fo-fr:Legal_Status
+  rdf:type owl:Class ;
+  rdfs:label "Legal Status"^^xsd:string ;
+  rdfs:subClassOf lkif-norm:Normatively_Qualified ;
+.
+fo-fr:Material_Circumstance
+  rdf:type owl:Class ;
+  rdfs:label "Material Circumstance"^^xsd:string ;
+  rdfs:subClassOf lkif-norm:Normatively_Qualified ;
+  rdfs:subClassOf fo-fr:Judicially_Qualified ;
+.
+fo-fr:Qualifying_Legal_Expression
+  rdf:type owl:Class ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification> ;
+  rdfs:subClassOf lkif-norm:Legal_Expression ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification>
+          lkif-norm:Legal_Expression
+        ) ;
+    ] ;
+.
+fo-fr:RatingAgency
+  rdf:type owl:Class ;
+  rdfs:label "Rating Agency"^^xsd:string ;
+  rdfs:subClassOf <http://spec.edmcouncil.org/fibo/IND/Indicators/Indicators/FinancialInformationPublisher> ;
+.
+fo-fr:SecuritiesAdvice
+  rdf:type owl:Class ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+  rdfs:subClassOf fo-fr:InvestmentAdvice ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Restriction ;
+            owl:hasValue fo-fr:FinancialProduct_Securities ;
+            owl:onProperty fibo-fnd-rel-rel:involves ;
+          ]
+          fo-fr:InvestmentAdvice
+        ) ;
+    ] ;
+.
+fo-fr:ServiceClassificationScheme
+  rdf:type owl:Class ;
+  rdfs:label "Service scheme"^^xsd:string ;
+  rdfs:subClassOf <http://spec.edmcouncil.org/fibo/FND/Arrangements/ClassificationSchemes/ClassificationScheme> ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom fo-fr:ServiceFeeType ;
+      owl:onProperty fibo-fnd-rel-rel:defines ;
+    ] ;
+.
+fo-fr:ServiceFeeType
+  rdf:type owl:Class ;
+  rdfs:label "Service Fee Type"^^xsd:string ;
+  rdfs:subClassOf <http://spec.edmcouncil.org/fibo/FND/Arrangements/ClassificationSchemes/Classifier> ;
+  owl:oneOf (
+      fo-fr:ServiceFeeType_Fixed
+      fo-fr:ServiceFeeType_AssetBased
+      fo-fr:ServiceFeeType_PerformanceBased
+    ) ;
+.
+fo-fr:ServiceFeeType_AssetBased
+  rdf:type fo-fr:ServiceFeeType ;
+  rdfs:label "Asset based fee"^^xsd:string ;
+.
+fo-fr:ServiceFeeType_Fixed
+  rdf:type fo-fr:ServiceFeeType ;
+  rdfs:label "Fixed fee"^^xsd:string ;
+.
+fo-fr:ServiceFeeType_PerformanceBased
+  rdf:type fo-fr:ServiceFeeType ;
+  rdfs:label "Performance based"^^xsd:string ;
+.
+fo-fr:ServiceType
+  rdf:type owl:Class ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+  rdfs:subClassOf <http://spec.edmcouncil.org/fibo/FND/Arrangements/ClassificationSchemes/Classifier> ;
+  owl:oneOf (
+      fo-fr:ServiceType_Brokerage
+      fo-fr:ServiceType_Account
+      fo-fr:ServiceType_InvestmentAdvice
+    ) ;
+.
+fo-fr:ServiceType_Account
+  rdf:type fo-fr:ServiceType ;
+  rdfs:label "Account Services"^^xsd:string ;
+.
+fo-fr:ServiceType_Brokerage
+  rdf:type fo-fr:ServiceType ;
+  rdfs:label "Brokerage Services"^^xsd:string ;
+.
+fo-fr:ServiceType_InvestmentAdvice
+  rdf:type fo-fr:ServiceType ;
+  rdfs:label "Investment Advice"^^xsd:string ;
+.
+fo-fr:US_RegulatoryAgency_1
+  rdf:type owl:Class ;
+  rdfs:label "Whitingham Alpha fund"^^xsd:string ;
+  rdfs:subClassOf fibo-fbc-fct-rga:RegulatoryAgency ;
+.
+fo-fr:advises
+  rdf:type rdf:Property ;
+  rdfs:label "advise"^^xsd:string ;
+  skos:definition "offer suggestions about the best course of action to someone"^^xsd:string ;
+.
+fo-fr:applies_legal
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain lkif-norm:Legal_Expression ;
+  rdfs:label "applies concept"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/expression.owl#Qualified> ;
+  rdfs:subPropertyOf <http://www.estrellaproject.org/lkif-core/expression.owl#qualifies> ;
+.
+fo-fr:considered_by
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification> ;
+  rdfs:label "considered by"^^xsd:string ;
+  rdfs:range lkif-norm:Qualificatory_Expression ;
+  rdfs:subPropertyOf <http://www.estrellaproject.org/lkif-core/expression.owl#qualified_by> ;
+  owl:inverseOf fo-fr:considers ;
+.
+fo-fr:considers
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain lkif-norm:Qualificatory_Expression ;
+  rdfs:label "considers"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification> ;
+  rdfs:subPropertyOf <http://www.estrellaproject.org/lkif-core/expression.owl#qualifies> ;
+.
+sm:author
+  rdfs:range xsd:string ;
+.
+[
+  rdf:type owl:AllDifferent ;
+  owl:members (
+      fo-fr:Advice
+    ) ;
+].
+[
+  rdf:type owl:AllDifferent ;
+  owl:members (
+      fo-fr:ServiceType_Brokerage
+      fo-fr:ServiceType_Account
+    ) ;
+].
+[
+  rdf:type owl:AllDifferent ;
+  owl:members (
+      fo-fr:ServiceType_InvestmentAdvice
+    ) ;
+].

@@ -1,0 +1,318 @@
+# baseURI: http://www.jayzed.com/hfr/FundSampleData
+# imports: http://www.fundontology.com/InvestorAdviserAct
+
+@prefix : <http://www.jayzed.com/hfr/FundSampleData#> .
+@prefix fibo-be-fct-pub: <http://spec.edmcouncil.org/fibo/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-be-oac-opty: <http://spec.edmcouncil.org/fibo/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-fbc-fct-fse: <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fct-rga: <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/RegulatoryAgencies/> .
+@prefix fibo-fbc-fct-usfse: <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/USJurisdiction/USFinancialServicesEntities/> .
+@prefix fibo-fbc-pas-fpas: <http://spec.edmcouncil.org/fibo/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-arr-cls: <http://spec.edmcouncil.org/fibo/FND/Arrangements/ClassificationSchemes/> .
+@prefix fibo-fnd-rel-rel: <http://spec.edmcouncil.org/fibo/FND/Relations/Relations/> .
+@prefix fo-fr: <http://www.fundontology.com/FundRegulation#> .
+@prefix fo-smp: <http://www.jayzed.com/hfr/FundSampleData#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix owl2dl: <http://www.jayzed.com/hfr/owl2dl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sp:arg_rule
+  rdf:type rdf:Property ;
+  rdfs:label "TD Prime Service"^^xsd:string ;
+  rdfs:subPropertyOf sp:arg ;
+.
+sp:considered_by_rule
+  rdf:type rdf:Property ;
+  rdfs:label "TD Prime Service"^^xsd:string ;
+  rdfs:range fo-fr:Legal_Rule ;
+  rdfs:subPropertyOf sp:arg_rule ;
+.
+sp:default_rule
+  rdf:type rdf:Property ;
+  rdfs:label "TD Prime Service"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/norm.owl#Normatively_Qualified> ;
+  rdfs:subPropertyOf sp:arg_rule ;
+.
+sp:exception_rule
+  rdf:type rdf:Property ;
+  rdfs:label "TD Prime Service"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/norm.owl#Normatively_Qualified> ;
+  rdfs:subPropertyOf sp:arg_rule ;
+.
+sp:target_rule
+  rdf:type rdf:Property ;
+  rdfs:label "TD Prime Service"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/norm.owl#Normatively_Qualified> ;
+  rdfs:subPropertyOf sp:arg_rule ;
+.
+fo-fr:FinancialProduct_Securities
+  fibo-fnd-rel-rel:isProvidedBy fo-smp:InvestmentAdviser_TDAmeritrade ;
+  fibo-fnd-rel-rel:isProvidedBy fo-smp:InvestmentAdviser_WhitinghamWealth ;
+.
+fo-fr:Legal_Rule
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass [
+          rdf:type owl:Class ;
+          owl:intersectionOf (
+              fo-fr:Legal_Consequence
+              [
+                rdf:type owl:Restriction ;
+                owl:allValuesFrom fo-fr:Legal_Consequence ;
+                owl:onProperty fo-fr:applies_legal ;
+              ]
+            ) ;
+        ] ;
+      owl:onProperty fo-fr:applies_legal ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Ex_US_IAA_Section_202_1_11>
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          <http://www.fundontology.com/InvestorAdviserAct#Defined_Ex_US_IAA_Section_202_1_11>
+          [
+            rdf:type owl:Class ;
+            owl:complementOf <http://www.fundontology.com/InvestorAdviserAct#Excluded_Ex_US_IAA_Section_202_1_11> ;
+          ]
+        ) ;
+    ] ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Def_US_IAA_Sect_202a11>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#inclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Def_US_IAA_Sect_202a11_1_business>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#inclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Def_US_IAA_Sect_202a11_1_compensation>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#inclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Def_US_IAA_Sect_202a11_1_service>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#inclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Excl_US_IAA_Sect_202a11>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#exclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Excl_US_IAA_Sect_202a11_1_A_bank>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#exclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Excl_US_IAA_Sect_202a11_1_B_professional>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#exclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Excl_US_IAA_Sect_202a11_1_C_broker_dealer>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#exclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Excl_US_IAA_Sect_202a11_1_D_publisher>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#exclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Excl_US_IAA_Sect_202a11_1_E_gov_sec_only>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#exclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#Rule_Excl_US_IAA_Sect_202a11_1_F_rating_organization>
+  fo-fr:applies_legal <http://www.fundontology.com/InvestorAdviserAct#exclusion_US_IAA_Section_202_1_11> ;
+.
+<http://www.fundontology.com/InvestorAdviserAct#US_IAA>
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://www.fundontology.com/InvestorAdviserAct#Ex_US_IAA_Section_202_1_11> ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://www.fundontology.com/InvestorAdviserAct#Rule_US_IAA_Sect_202a11> ;
+            sp:predicate fo-fr:considered_by ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object <http://www.fundontology.com/InvestorAdviserAct#Defined_Ex_US_IAA_Section_202_1_11> ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Minus ;
+            sp:elements (
+                [
+                  sp:object <http://www.fundontology.com/InvestorAdviserAct#Excluded_Ex_US_IAA_Section_202_1_11> ;
+                  sp:predicate rdf:type ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+.
+<http://www.jayzed.com/hfr/FundSampleData>
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.fundontology.com/InvestorAdviserAct> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+fo-smp:BrokerageFirm_TDAmeritrade
+  rdf:type fibo-fbc-fct-fse:BrokerageFirm ;
+  rdfs:label "TD Ameritrade"^^xsd:string ;
+.
+fo-smp:FinancialAdvisoryService_WhitinghamWealthServices
+  rdf:type fo-fr:InvestmentAdvice ;
+  fibo-fnd-rel-rel:involves fo-fr:FinancialProduct_Securities ;
+  fibo-fnd-rel-rel:isClassifiedBy fo-fr:ServiceFeeType_PerformanceBased ;
+  fibo-fnd-rel-rel:isClassifiedBy fo-fr:ServiceType_InvestmentAdvice ;
+  fibo-fnd-rel-rel:provides fo-smp:FinancialAdvisoryService_WhitinghamWealthServices ;
+  rdfs:label "Whitingham Wealth Services"^^xsd:string ;
+.
+fo-smp:FinancialServiceFeeType
+  rdf:type fibo-fnd-arr-cls:Classifier ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+.
+fo-smp:FinancialServiceProductType
+  rdf:type fibo-fnd-arr-cls:Classifier ;
+  rdfs:label "FinancialServiceProductType"^^xsd:string ;
+.
+fo-smp:InvestmentAdvice_TDPrime
+  rdf:type fo-fr:InvestmentAdvice ;
+  fibo-fnd-rel-rel:involves fo-fr:FinancialProduct_Securities ;
+  fibo-fnd-rel-rel:isClassifiedBy fo-fr:ServiceFeeType_Fixed ;
+  fibo-fnd-rel-rel:isClassifiedBy fo-fr:ServiceType_Brokerage ;
+  fibo-fnd-rel-rel:isClassifiedBy fo-fr:ServiceType_InvestmentAdvice ;
+  fibo-fnd-rel-rel:isProvidedBy fo-smp:BrokerageFirm_TDAmeritrade ;
+  rdfs:label "TD Prime Service"^^xsd:string ;
+.
+fo-smp:InvestmentAdviser_TDAmeritrade
+  rdf:type fo-fr:InvestmentAdviser ;
+  fibo-fnd-rel-rel:provides fo-fr:SecuritiesAdvice ;
+  rdfs:label "TD Ameritrade"^^xsd:string ;
+  owl:sameAs fo-smp:BrokerageFirm_TDAmeritrade ;
+.
+fo-smp:InvestmentAdviser_WhitinghamWealth
+  rdf:type fo-fr:InvestmentAdviser ;
+  fibo-fnd-rel-rel:manages fo-smp:InvestmentFund_WhitinghamAlpha ;
+  fibo-fnd-rel-rel:manages fo-smp:InvestmentFund_WhitinghamBeta ;
+  fibo-fnd-rel-rel:manages fo-smp:InvestmentFund_WhitinghamDelta ;
+  fibo-fnd-rel-rel:manages fo-smp:InvestmentFund_WhitinghamEpsilon ;
+  fibo-fnd-rel-rel:manages fo-smp:InvestmentFund_WhitinghamGamma ;
+  fibo-fnd-rel-rel:provides fo-smp:FinancialAdvisoryService_WhitinghamWealthServices ;
+  fo-fr:advises fo-smp:Investor_GreenMountainPensons ;
+  rdfs:comment "A fictitious Vermont Investment Manager"^^xsd:string ;
+  rdfs:label "Whitingham Wealth"^^xsd:string ;
+.
+fo-smp:InvestmentFund_WhitinghamAlpha
+  rdf:type fibo-fbc-fct-fse:ManagementCompany ;
+  fibo-fbc-fct-rga:isRegulatedBy <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/USJurisdiction/USRegulatoryAgencies/SecuritiesAndExchangeCommission> ;
+  sm:author "Jurgen Ziemer"^^xsd:string ;
+  rdfs:comment "A fictitious Vermont Hedge Fund"^^xsd:string ;
+  rdfs:label "Whitingham Alpha fund"^^xsd:string ;
+.
+fo-smp:InvestmentFund_WhitinghamBeta
+  rdf:type fibo-fbc-fct-fse:ManagementCompany ;
+  fibo-fbc-fct-rga:isRegulatedBy <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/USJurisdiction/USRegulatoryAgencies/SecuritiesAndExchangeCommission> ;
+  rdfs:comment "A fictitious Vermont Hedge Fund"^^xsd:string ;
+  rdfs:label "Whitingham Beta fund"^^xsd:string ;
+.
+fo-smp:InvestmentFund_WhitinghamDelta
+  rdf:type fibo-fbc-fct-fse:ManagementCompany ;
+  fibo-fbc-fct-rga:isRegulatedBy <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/USJurisdiction/USRegulatoryAgencies/SecuritiesAndExchangeCommission> ;
+  rdfs:comment "A fictitious Vermont Hedge Fund"^^xsd:string ;
+  rdfs:label "Whitingham Delta fund"^^xsd:string ;
+.
+fo-smp:InvestmentFund_WhitinghamEpsilon
+  rdf:type fibo-fbc-fct-fse:ManagementCompany ;
+  rdfs:comment "A fictitious Vermont Hedge Fund"^^xsd:string ;
+  rdfs:label "Whitingham Epsilon fund"^^xsd:string ;
+.
+fo-smp:InvestmentFund_WhitinghamGamma
+  rdf:type fibo-fbc-fct-fse:ManagementCompany ;
+  fibo-fbc-fct-rga:isRegulatedBy <http://spec.edmcouncil.org/fibo/FBC/FunctionalEntities/USJurisdiction/USRegulatoryAgencies/SecuritiesAndExchangeCommission> ;
+  rdfs:comment "A fictitious Vermont Hedge Fund"^^xsd:string ;
+  rdfs:label "Whitingham Gamma fund"^^xsd:string ;
+.
+fo-smp:Investor_GreenMountainPensons
+  rdf:type fibo-be-oac-opty:Investor ;
+  rdfs:comment "A fictitious Vermont Pension Fund"^^xsd:string ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+.
+fo-smp:Publisher_Bloomberg
+  rdf:type fibo-be-fct-pub:Publisher ;
+  rdfs:label "Bloomberg"^^xsd:string ;
+.
+fo-smp:RatingAgency_Moodys
+  rdf:type fo-fr:RatingAgency ;
+  rdfs:label "Moody's"^^xsd:string ;
+.
+fo-smp:RatingAgency_SandP
+  rdf:type fo-fr:RatingAgency ;
+  rdfs:label "Standard & Poors"^^xsd:string ;
+.
+fo-smp:SavingsAndLoanAssociation_Brattleboro_SL
+  rdf:type fibo-fbc-fct-usfse:SavingsAndLoanAssociation ;
+  rdfs:label "Brattleboro Savings & Loan"^^xsd:string ;
+.
+owl2dl:ContructException
+  spin:body [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "target_rule"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "considered_by_rule"^^xsd:string ;
+              ] ;
+            sp:predicate fo-fr:considered_by ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "default_rule"^^xsd:string ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Minus ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "exception_rule"^^xsd:string ;
+                    ] ;
+                  sp:predicate rdf:type ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "0"^^xsd:boolean ;
+      spl:predicate sp:target_rule ;
+      rdfs:comment "The target rule, where the instance will be constructed"^^xsd:string ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate sp:considered_by_rule ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate sp:default_rule ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate sp:exception_rule ;
+    ] ;
+.
